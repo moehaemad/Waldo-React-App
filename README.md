@@ -1,2 +1,2 @@
-# Waldo-React-App
-Simple React App to collect system information and to use integrated AWS Postgres RDS to store trivial information.
+# Simple Generator
+This simply creates a random string or random number and adds it to a database to use for passwords or any other use cases that might require a random generator.

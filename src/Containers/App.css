@@ -2,8 +2,16 @@
   background: url('../Assets/1_7v_75ZGg1CTmWAw1rEgMHQ.jpeg');
 }
 
+button {
+  border-radius: 1rem;
+  padding: 2rem;
+  align-self: center;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {

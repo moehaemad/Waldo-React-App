@@ -1,0 +1,19 @@
+.Output {
+/* 
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center; */
+    align-self: center;
+    margin: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    background: none;
+    background-color: lightblue;
+    border: 2px solid black;
+    /* width: 10rem; */
+}
+
+.Output *{
+    background: none;
+    align-self: center;
+}
