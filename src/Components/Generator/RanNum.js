@@ -1,7 +1,7 @@
 import React from 'react';
 import GeneratorCss from './Generator.module.css';
 
-const RanString = (props) => {
+const RanNum = (props) => {
     // const [state, setState] = React.useState(0);
     const [state, setState] = React.useState({open: true});
 
@@ -68,4 +68,4 @@ const RanString = (props) => {
 
 }
 
-export default RanString;
+export default RanNum;
