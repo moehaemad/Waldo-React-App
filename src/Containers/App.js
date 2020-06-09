@@ -8,15 +8,6 @@ const OS = require('os');
 
 class App extends Component{
 
-
-  //For reference
-  
-  /* 
-  Arch is architecture (ex. arm, x32 etc.)
-  host is the hostname of the operating system
-  ip, mac are found from os.networtInterfaces() object
-  platform is the operating system (ex. linux, win32 etc.)
-   */
   state = {
     show: false,
     btn: 'start'

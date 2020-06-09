@@ -15,5 +15,24 @@
 
 .Output *{
     background: none;
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    margin: 20px;
+}
+
+.Title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Close {
+    
+    background: red;
+    weight:bold;
+    padding: 5px;
+    margin-left: 10px;
 }
