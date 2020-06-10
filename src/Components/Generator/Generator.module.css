@@ -29,6 +29,18 @@ button {
     justify-content: center;
 }
 
+.Options *{
+    display: flex;
+    flex-direction: row;
+    margin: 3px;
+    vertical-align: center;
+    text-align: center;
+}
+.Options label {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
 .Close {
     
     background: red;

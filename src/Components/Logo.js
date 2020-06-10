@@ -1,12 +1,12 @@
 import React from 'react';
-import Logo from './Logo.module.css';
+import LogoCss from './Logo.module.css';
 
-const logo = (props) => {
+const Logo = (props) => {
    return (
        <div>
-           <h1 className={Logo.Main}>Simple Generator</h1>
+           <h1 className={LogoCss.Main}>Simple Generator</h1>
        </div>
    )
 }
 
-export default logo;
+export default Logo;

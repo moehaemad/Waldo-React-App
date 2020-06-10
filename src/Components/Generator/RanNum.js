@@ -3,7 +3,7 @@ import GeneratorCss from './Generator.module.css';
 
 const RanNum = (props) => {
     // const [state, setState] = React.useState(0);
-    const [state, setState] = React.useState({open: true});
+    const [state, setState] = React.useState({open: false});
 
     let values = {
         length: 0,
@@ -23,9 +23,6 @@ const RanNum = (props) => {
 
     const toggleWindow = () => {
         state.open ? setState({open: false}) : setState({open:true});
-        // Update the values object that is a temporary place to put state without
-            // entering length, start, end, and open each time to update state.
-        values.open = state.open;
     }
 
     const options = () => {
@@ -41,8 +38,7 @@ const RanNum = (props) => {
         );
     }
 
-    const outputNumber = (event) => {
-        console.log(values);
+    const outputNumber = () => {
         values.output = Math.floor(Math.random()*values.end + values.start);
         //re-render the component
         setState({

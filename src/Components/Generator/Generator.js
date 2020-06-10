@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import Generator from './Generator.module.css';
+import GeneratorCss from './Generator.module.css';
 import RanNum from './RanNum';
+import RanString from './RanString';
 
-class generator extends Component {
+class Generator extends Component {
 
     state = {
         num: 0,
@@ -14,7 +15,8 @@ class generator extends Component {
 
     render (){
         return (
-            <div className={Generator.Output}>
+            <div className={GeneratorCss.Output}>
+                <RanString/>
                 <RanNum/>
             </div>
         );
@@ -22,4 +24,4 @@ class generator extends Component {
 }
 
 
-export default generator;
+export default Generator;

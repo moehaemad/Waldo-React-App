@@ -3,7 +3,7 @@ import './App.css';
 import Logo from '../Components/Logo'
 import Generator from '../Components/Generator/Generator';
 
-const OS = require('os');
+// const OS = require('os');
 
 
 class App extends Component{
@@ -13,17 +13,17 @@ class App extends Component{
     btn: 'start'
   }
 
-  exploitInformation = (e) => {
-    this.setState({show: true});
-    let network = OS.networkInterfaces();
-    if (network == null) network = "Not Available";
-    const platform = OS.platform();
-    const host = OS.hostname();
-    console.log(OS.platform());
-    return (
-      <p>ip</p>
-    );
-  }
+  // exploitInformation = (e) => {
+  //   this.setState({show: true});
+  //   let network = OS.networkInterfaces();
+  //   if (network == null) network = "Not Available";
+  //   const platform = OS.platform();
+  //   const host = OS.hostname();
+  //   console.log(OS.platform());
+  //   return (
+  //     <p>ip</p>
+  //   );
+  // }
 
   render(){
     return(
