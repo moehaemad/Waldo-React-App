@@ -4,7 +4,8 @@ const RanString = () => {
     const [state, setState] = React.useState({
         open: true,
         capital: false,
-        special: false
+        special: false,
+        ouput: ''
     });
 
     const toggleWindow = () => {
@@ -17,15 +18,32 @@ const RanString = () => {
         if (type === 'capital') setState({open: prevState.open, capital: checked, special: prevState.special});
         if (type === 'special') setState({open: prevState.open, capital: prevState.capital, special: checked});
     }
+    
+    const pickAtRandom = (size) => {
+        const length = 10;
+        let toReturn = [];
+        for (let i=0; i<=length; i++){
+            toReturn.push(Math.floor(Math.random()*(size-1)));
+        }
+        return toReturn;
+    }
 
     const createString = () => {
-        let abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        const abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
         const special = [`!`, `"`, `#`, `$`, `%`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `-`, `.`, `/`, `:`, `;`, `<`, `=`, `>`, `?`, `@`, `[`, `]`, `@`, `^`, `_`, `{`, `}`, `~`];
         const ABC = abc.map(el => el.toUpperCase());
+        let full = []
         let toReturn = [];
-        if (state.capital) toReturn = toReturn.concat(abc, ABC);
-        if (state.special) toReturn = toReturn.concat(special);
+        if (state.capital) full = full.concat(abc, ABC);
+        if (state.special) full = full.concat(special);
 
+        let indexes = pickAtRandom(full.length);
+        // console.log(indexes);
+        indexes.forEach((el) => {
+            console.log(full[el])
+            // let toPush = full[el];
+            toReturn.push(full[el]);
+        });
         return (
             <div>
                 <p>{toReturn}</p>
