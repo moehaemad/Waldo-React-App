@@ -148,7 +148,7 @@ checkBrowsers(paths.appPath, isInteractive)
         process.exit();
       });
     });
-
+    
     if (isInteractive || process.env.CI !== 'true') {
       // Gracefully exit when stdin ends
       process.stdin.on('end', function() {
