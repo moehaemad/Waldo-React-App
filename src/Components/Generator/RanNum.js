@@ -1,5 +1,5 @@
 import React from 'react';
-import GeneratorCss from './Generator.module.css';
+import './Generator.css';
 
 const RanNum = (props) => {
     // const [state, setState] = React.useState(0);
@@ -51,12 +51,12 @@ const RanNum = (props) => {
     }
 
     return (
-        <div className={GeneratorCss.Output}>
-            <div className={GeneratorCss.Title}>
+        <div className='Output'>
+            <div className='Title'>
                 <h2>
                     Random Number
                 </h2>
-                <button className={GeneratorCss.Close} onClick={toggleWindow}>{state.open ? 'X' : 'O'}</button>
+                <button className='Close' onClick={toggleWindow}>{state.open ? 'X' : 'O'}</button>
             </div>
             {state.open ? options() : null}
         </div>

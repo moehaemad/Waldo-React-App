@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import GeneratorCss from './Generator.module.css';
+import './Generator.css';
 import RanNum from './RanNum';
 import RanString from './RanString';
 
@@ -15,7 +15,7 @@ class Generator extends Component {
 
     render (){
         return (
-            <div className={GeneratorCss.Output}>
+            <div className='Output'>
                 <RanString/>
                 <RanNum/>
             </div>

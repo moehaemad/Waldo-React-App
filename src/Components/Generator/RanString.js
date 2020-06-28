@@ -1,25 +1,29 @@
-import React from 'react';
-import GeneratorCSS from './Generator.module.css';
-const RanString = () => {
-    const [state, setState] = React.useState({
+import React, { Component } from 'react';
+import './Generator.css';
+
+
+class RanString extends Component {
+
+    state = {
         open: true,
         capital: false,
         special: false,
-        ouput: ''
-    });
-
-    const toggleWindow = () => {
-        state.open ? setState({open: false}) : setState({open:true});
+        output: '',
+        length: 5
     }
 
-    const changeValues = (e, type) => {
+    toggleWindow = () => {
+        this.state.open ? this.setState({open: false}) : this.setState({open: true});
+    }
+
+    changeValues = (e, type) => {
         const checked = e.target.checked;
-        const prevState = state;
-        if (type === 'capital') setState({open: prevState.open, capital: checked, special: prevState.special});
-        if (type === 'special') setState({open: prevState.open, capital: prevState.capital, special: checked});
+        if (type === 'capital') this.setState({capital: checked});
+        if (type === 'special') this.setState({special: checked});
+
     }
     
-    const pickAtRandom = (size) => {
+    pickAtRandom = (size) => {
         const length = 10;
         let toReturn = [];
         for (let i=0; i<=length; i++){
@@ -28,56 +32,56 @@ const RanString = () => {
         return toReturn;
     }
 
-    const createString = () => {
+    createString = () => {
         const abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
         const special = [`!`, `"`, `#`, `$`, `%`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `-`, `.`, `/`, `:`, `;`, `<`, `=`, `>`, `?`, `@`, `[`, `]`, `@`, `^`, `_`, `{`, `}`, `~`];
         const ABC = abc.map(el => el.toUpperCase());
-        let full = []
+        let full = abc;
         let toReturn = [];
-        if (state.capital) full = full.concat(abc, ABC);
-        if (state.special) full = full.concat(special);
+        if (this.state.capital) full = full.concat(ABC);
+        if (this.state.special) full = full.concat(special);
 
-        let indexes = pickAtRandom(full.length);
-        // console.log(indexes);
+        let indexes = this.pickAtRandom(full.length);
         indexes.forEach((el) => {
-            console.log(full[el])
-            // let toPush = full[el];
             toReturn.push(full[el]);
         });
-        return (
-            <div>
-                <p>{toReturn}</p>
-            </div>
-        );
+
+        this.setState({output: toReturn});
     }
 
-    const options = () => {
-
-        // const output = createString();
+    options = () => {
 
         return (
-            <div className={GeneratorCSS.Options}>
+            <div className='Options'>
                 {/* <input type="checkbox" id="something"/> */}
-                <label><input type="checkbox" onChange={(e) => changeValues(e, 'capital')}/> include capital letters</label>
-                <label><input type="checkbox" onChange={(e) => changeValues(e, 'special')}/> special characters</label>
-                <label>Length: <input type="number"/></label>
-                {/* {output} */}
+                <label><input type="checkbox" onChange={(e) => this.changeValues(e, 'capital')}/> include capital letters</label>
+                <label><input type="checkbox" onChange={(e) => this.changeValues(e, 'special')}/> special characters</label>
+                <label>Length: <input type="number" onChange={(e)=> {
+                    this.setState ({length: e.target.value});
+                }}/></label>
             </div>
         );
     }
 
-    return (
-        <div className={GeneratorCSS.Output}>
-            <div className={GeneratorCSS.Title}>
-                <h2>
-                    Random String
-                </h2>
-                <button className={GeneratorCSS.Close} onClick={toggleWindow}>{state.open ? 'X' : 'O'}</button>
+    render() {
+        const output = this.state.output;
+
+        return (
+            <div className='Output'>
+                <div className='Title'>
+                    <h2>
+                        Random String
+                    </h2>
+                    <button className='Close' onClick={this.toggleWindow}>{this.state.open ? 'X' : 'O'}</button>
+                </div>
+                {this.state.open ? this.options() : null}
+                <button onClick={(e) => this.createString()}>Submit</button>
+                <p>
+                    {output}
+                </p>
             </div>
-            {state.open ? options() : null}
-            {createString()}
-        </div>
-    );
+        );
+    }
 }
 
 export default RanString;

@@ -1,10 +1,10 @@
 import React from 'react';
-import LogoCss from './Logo.module.css';
+import './Logo.css';
 
 const Logo = (props) => {
    return (
        <div>
-           <h1 className={LogoCss.Main}>Simple Generator</h1>
+           <h1 className='Main'>Simple Generator</h1>
        </div>
    )
 }
