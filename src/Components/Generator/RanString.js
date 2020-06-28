@@ -20,13 +20,11 @@ class RanString extends Component {
         const checked = e.target.checked;
         if (type === 'capital') this.setState({capital: checked});
         if (type === 'special') this.setState({special: checked});
-
     }
     
     pickAtRandom = (size) => {
-        const length = 10;
         let toReturn = [];
-        for (let i=0; i<=length; i++){
+        for (let i=0; i<this.state.length; i++){
             toReturn.push(Math.floor(Math.random()*(size-1)));
         }
         return toReturn;
