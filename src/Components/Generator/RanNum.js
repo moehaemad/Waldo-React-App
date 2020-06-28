@@ -2,7 +2,6 @@ import React from 'react';
 import './Generator.css';
 
 const RanNum = (props) => {
-    // const [state, setState] = React.useState(0);
     const [state, setState] = React.useState({open: false});
 
     let values = {
@@ -63,5 +62,4 @@ const RanNum = (props) => {
     );
 
 }
-
 export default RanNum;

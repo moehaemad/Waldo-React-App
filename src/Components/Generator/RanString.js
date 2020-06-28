@@ -8,6 +8,7 @@ class RanString extends Component {
         open: true,
         capital: false,
         special: false,
+        number: false,
         output: '',
         length: 5
     }
@@ -34,29 +35,34 @@ class RanString extends Component {
         const abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
         const special = [`!`, `"`, `#`, `$`, `%`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `-`, `.`, `/`, `:`, `;`, `<`, `=`, `>`, `?`, `@`, `[`, `]`, `@`, `^`, `_`, `{`, `}`, `~`];
         const ABC = abc.map(el => el.toUpperCase());
+        const num = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
         let full = abc;
         let toReturn = [];
-        if (this.state.capital) full = full.concat(ABC);
-        if (this.state.special) full = full.concat(special);
+
+        const concat = (toConcat) => full = full.concat(toConcat);
+
+        if (this.state.capital) concat(ABC);
+        if (this.state.special) concat(special);
+        if (this.state.number) concat(num);
 
         let indexes = this.pickAtRandom(full.length);
         indexes.forEach((el) => {
             toReturn.push(full[el]);
         });
 
-        this.setState({output: toReturn});
+        this.setState({output: toReturn.join('')});
     }
 
     options = () => {
 
         return (
             <div className='Options'>
-                {/* <input type="checkbox" id="something"/> */}
-                <label><input type="checkbox" onChange={(e) => this.changeValues(e, 'capital')}/> include capital letters</label>
-                <label><input type="checkbox" onChange={(e) => this.changeValues(e, 'special')}/> special characters</label>
+                <label><input type="checkbox" onChange={(e) => this.setState({capital: e.target.checked})}/> include capital letters</label>
+                <label><input type="checkbox" onChange={(e) => this.setState({special: e.target.checked})}/> special characters</label>
+                <label><input type="checkbox" onChange={(e) => this.setState({number: e.target.checked})}/> Numbers</label>
                 <label>Length: <input type="number" onChange={(e)=> {
                     this.setState ({length: e.target.value});
-                }}/></label>
+                }} placeholder="Deafult: 5"/></label>
             </div>
         );
     }
@@ -73,7 +79,12 @@ class RanString extends Component {
                     <button className='Close' onClick={this.toggleWindow}>{this.state.open ? 'X' : 'O'}</button>
                 </div>
                 {this.state.open ? this.options() : null}
-                <button onClick={(e) => this.createString()}>Submit</button>
+                <div className='Submit'>
+                    <button onClick={(e) => this.createString()}>Submit</button>
+                    <button className='Clipboard' onClick={() => navigator.clipboard.writeText(this.state.output)}>
+                        Copy
+                    </button>
+                </div>
                 <p>
                     {output}
                 </p>
