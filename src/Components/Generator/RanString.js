@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Generator.css';
+import '../Section.css';
 
 
 class RanString extends Component {
@@ -62,7 +62,7 @@ class RanString extends Component {
                 <label><input type="checkbox" onChange={(e) => this.setState({number: e.target.checked})}/> Numbers</label>
                 <label>Length: <input type="number" onChange={(e)=> {
                     this.setState ({length: e.target.value});
-                }} placeholder="Deafult: 5"/></label>
+                }} placeholder="Default: 5"/></label>
             </div>
         );
     }
